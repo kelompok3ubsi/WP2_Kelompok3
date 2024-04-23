@@ -1,9 +1,17 @@
 <section class="content-header">
-  
-    <h2>Stock In
-        <small style="color: gray;">Barang Masuk</small>
-    </h2>   
-      
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2>Stock Out</h2>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
+                    <li class="breadcrumb-item active">History Stock Out</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
 
    
@@ -14,11 +22,11 @@
         <div class="card-header" >
             <div class="d-flex justify-content-between">
                 <div class="pull-right" style="margin-top: 15px; margin-left: 10px;">
-                    <h3 class="box-title">Data Stock In</h3>
+                    <h3 class="box-title">Data Stock Out</h3>
                 </div>
                 <div class="col-md-6 text-right" style="margin-top: 10px; margin-right: 10px;">
-                    <a href="<?=site_url('stock/in/add')?>" class="btn btn-primary btn-flat">
-                        <i class="fa fa-plus"></i> Add Stock In
+                    <a href="<?=site_url('stock/out/add')?>" class="btn btn-primary btn-flat">
+                        <i class="fa fa-plus"></i> Add Stock Out
                     </a>
                 </div>
             </div>
@@ -45,7 +53,7 @@
                         <td class="text-right"><?= $data->qty ?></td>
                         <td class="text-right"><?=indo_date($data->date)?></td>
                         <td class="text-center" width="160px">
-                            <a id="set_dtl" class="btn btn-default btn-xs" 
+                            <a id="select_out" class="btn btn-default btn-xs" 
                                 data-toggle="modal" data-target="#modal-detail"
                                 data-barcode="<?=$data->barcode?>"
                                 data-itemname="<?=$data->item_name?>"
@@ -55,7 +63,7 @@
                                 data-date="<?=indo_date($data->date)?>">
                                 <i class="fa fa-eye"></i> Detail
                             </a>
-                            <a href="<?=site_url('stock/in/del/'.$data->stock_id.'/'.$data->item_id)?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
+                            <a href="<?=site_url('stock/out/del/'.$data->stock_id.'/'.$data->item_id)?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>
@@ -73,7 +81,7 @@
         <div class="modal-dialog" style="margin: 10; max-width: 40%;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Stock In Detail</h4>
+                    <h4 class="modal-title">Stock Out Detail</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -114,7 +122,7 @@
 
     <script>
         $(document).ready(function(){
-            $(document).on('click', '#set_dtl', function(){
+            $(document).on('click', '#select_out', function(){
                 var barcode = $(this).data('barcode');
                 var itemname = $(this).data('itemname');
                 var detail = $(this).data('detail');

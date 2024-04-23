@@ -179,7 +179,7 @@ $page = $components[2];
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?=site_url('transaction')?>" class="nav-link">
+            <a href="<?=site_url('#')?>" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Transaction
@@ -188,19 +188,19 @@ $page = $components[2];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=site_url('')?>" class="nav-link">
+                <a href="<?=site_url('sales')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sales</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=site_url('')?>" class="nav-link">
+                <a href="<?=site_url('stock/in')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stock In</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=site_url('')?>" class="nav-link">
+                <a href="<?=site_url('stock/out')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stock Out</p>
                 </a>
@@ -217,8 +217,7 @@ $page = $components[2];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../products/chartjs.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+              <a href="<?=site_url('report/sales')?>" class="nav-link">                  <i class="far fa-circle nav-icon"></i>
                   <p>Sales</p>
                 </a>
               </li>
@@ -290,6 +289,9 @@ $(document).ready(function(){
   markActiveLink('category');
   markActiveLink('unit');
   markActiveLink('item');
+  markActiveLink('sales');
+  markActiveLink('stock/in');
+  markActiveLink('stock/out');
 
 
   $('.nav-item .nav-link').on('click', function(){

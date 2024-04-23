@@ -1,9 +1,17 @@
 <section class="content-header">
-  
-    <h2>Stock In
-        <small style="color: gray;">Barang Masuk</small>
-    </h2>   
-      
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2>Stock Out</h2>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
+                    <li class="breadcrumb-item active">Add Stock Out</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
 
    
@@ -13,10 +21,10 @@
         <div class="card-header">
             <div class="d-flex justify-content-between">
                 <div class="pull-right" style="margin-top: 15px; margin-left: 10px;" >
-                    <h2 class="box-title">Add Stock In</h2>
+                    <h2 class="box-title">Add Stock Out</h2>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href="<?=site_url('stock/in')?>" class="btn btn-warning btn-flat" style="margin-top: 20px;">
+                    <a href="<?=site_url('stock/out')?>" class="btn btn-warning btn-flat" style="margin-top: 20px;">
                         <i class="fa fa-undo"></i> Back
                     </a>
                 </div>
@@ -77,7 +85,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" name="in_add" class="btn btn-success btn-flat">
+                            <button type="submit" name="out_add" class="btn btn-success btn-flat">
                                <i class="fa fa-paper-plane"></i> Save
                             </button>
                             <button type="reset" class="btn btn-flat" style="background-color: #c4c2bb;">Reset</button>
