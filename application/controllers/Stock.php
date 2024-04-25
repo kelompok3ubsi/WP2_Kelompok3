@@ -47,18 +47,18 @@ class Stock extends CI_Controller {
 
     public function stock_out_del()
     {
-        $stock_id = $this->input->post('stock_id');
-        $item_id = $this->input->post('item_id');
-        $qty = $this->stock_m->get_stock($stock_id)->row()->qty;
+        $stock_id = $this->uri->segment(4);
+        $item_id = $this->uri->segment(5);
+        $qty = $this->stock_m->get($stock_id)->row()->qty;
         $data = [
             'qty' => $qty,
             'item_id' => $item_id
         ];
-        $this->item_m->update_stock_out($data);
+        $this->item_m->update_stock_in($data);
         $this->stock_m->del($stock_id);
 
         if ($this->db->affected_rows() > 0) {
-            $this->session->set_flashdata('pesan', 'Data Stock-Out berhasil dihapus');
+            $this->session->set_flashdata('success', 'Data Stock-Out berhasil dihapus');
             redirect('stock/out');
         }
     }

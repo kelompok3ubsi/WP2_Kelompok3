@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Category_m extends CI_Model {
+class category_m extends CI_Model {
 
     public function get($id = null)
     {
@@ -12,14 +12,13 @@ class Category_m extends CI_Model {
         return $query;
     }
 
-    public function add($post)
-    {
+    public function add($post){
         $params = [
             'name' => $post['category_name'],
         ];
         $this->db->insert('p_category', $params);
     }
-
+    
     public function edit($post)
     {
         $params = [
@@ -30,10 +29,11 @@ class Category_m extends CI_Model {
         $this->db->update('p_category', $params);
     }
 
+
     public function del($id)
-	{
-		$this->db->where('category_id', $id);
+    {
+        $this->db->where('category_id', $id);
         $this->db->delete('p_category');
-	}
+    }
 
 }

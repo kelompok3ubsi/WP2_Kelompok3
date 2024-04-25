@@ -12,17 +12,16 @@ class Customer_m extends CI_Model {
         return $query;
     }
 
-    public function add($post)
-    {
+    public function add($post){
         $params = [
             'name' => $post['customer_name'],
             'gender' => $post['gender'],
             'phone' => $post['phone'],
-            'address' => $post['addr'],  
+            'address' => $post['addr'],
         ];
         $this->db->insert('customer', $params);
     }
-
+    
     public function edit($post)
     {
         $params = [
@@ -36,10 +35,11 @@ class Customer_m extends CI_Model {
         $this->db->update('customer', $params);
     }
 
+
     public function del($id)
-	{
-		$this->db->where('customer_id', $id);
+    {
+        $this->db->where('customer_id', $id);
         $this->db->delete('customer');
-	}
+    }
 
 }

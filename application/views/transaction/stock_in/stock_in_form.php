@@ -1,9 +1,18 @@
 <section class="content-header">
-  
-    <h2>Stock In
-        <small style="color: gray;">Barang Masuk</small>
-    </h2>   
-      
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2>Stock In</h2>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= site_url('stock/in') ?>">Data Stock In</a></li>
+                    <li class="breadcrumb-item active">Add Stock In</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
 
    

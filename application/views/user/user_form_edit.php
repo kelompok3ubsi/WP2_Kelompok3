@@ -1,8 +1,20 @@
 <section class="content-header">
-      
-    <h2>User
-        <small style="color: gray;">Pengguna</small>
-    </h2>     
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h2>Users
+                    <small style="color: gray;">Pengguna</small>
+                </h2> 
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= site_url('user') ?>">User</a></li>
+                    <li class="breadcrumb-item active">Edit User</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
 
    
@@ -29,12 +41,12 @@
                         <div class="form-group">
                             <label>Name *</label>
                             <input type="hidden" name="user_id" value="<?=$row->user_id?>">
-                            <input type="text" name="fullname" value="<?=$this->input->post('fullname') ?? $row->name?>" class="form-control">
+                            <input type="text" name="fullname" value="<?= $this->input->post('fullname') !== null ? $this->input->post('fullname') : $row->name ?>" class="form-control">
                             <?=form_error('fullname')?>
                         </div>
                         <div class="form-group">
                             <label>Username *</label>
-                            <input type="text" name="username" value="<?=$this->input->post('username') ?? $row->username?>" class="form-control">
+                            <input type="text" name="username" value="<?= $this->input->post('username') !== null ? $this->input->post('username') : $row->username ?>" class="form-control">
                             <?=form_error('username')?>
                         </div>
                         <div class="form-group">
@@ -49,7 +61,7 @@
                         </div>
                         <div class="form-group">
                             <label>Address</label>
-                            <textarea name="address" class="form-control"><?=$this->input->post('address') ?? $row->address?></textarea>
+                            <textarea name="address" class="form-control"><?= $this->input->post('address') ? $this->input->post('address') : $row->address ?></textarea>
                             <?=form_error('address')?>
                         </div>
                         <div class="form-group">

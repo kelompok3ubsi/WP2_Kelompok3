@@ -12,8 +12,7 @@ class Supplier_m extends CI_Model {
         return $query;
     }
 
-    public function add($post)
-    {
+    public function add($post){
         $params = [
             'name' => $post['supplier_name'],
             'phone' => $post['phone'],
@@ -22,7 +21,7 @@ class Supplier_m extends CI_Model {
         ];
         $this->db->insert('supplier', $params);
     }
-
+    
     public function edit($post)
     {
         $params = [
@@ -36,10 +35,11 @@ class Supplier_m extends CI_Model {
         $this->db->update('supplier', $params);
     }
 
+
     public function del($id)
-	{
-		$this->db->where('supplier_id', $id);
+    {
+        $this->db->where('supplier_id', $id);
         $this->db->delete('supplier');
-	}
+    }
 
 }

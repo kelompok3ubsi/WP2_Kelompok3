@@ -24,8 +24,10 @@ $page = $components[2];
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
   <link rel="stylesheet" href="<?=base_url()?>/assets/dist/css/adminlte.min.css">
+
+  <script src="<?=base_url()?>/assets/plugins/jquery/jquery.min.js"></script>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'tsale' ? ' sidebar-collapse' : '' ?>">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -188,7 +190,7 @@ $page = $components[2];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?=site_url('sales')?>" class="nav-link">
+                <a href="<?=site_url('sale')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sales</p>
                 </a>
@@ -217,8 +219,9 @@ $page = $components[2];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="<?=site_url('report/sales')?>" class="nav-link">                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sales</p>
+              <a href="report/sale" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Sales Report</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -243,7 +246,6 @@ $page = $components[2];
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-    <script src="<?=base_url()?>/assets/plugins/jquery/jquery.min.js"></script>
   </aside>
 
  
@@ -289,9 +291,10 @@ $(document).ready(function(){
   markActiveLink('category');
   markActiveLink('unit');
   markActiveLink('item');
-  markActiveLink('sales');
+  markActiveLink('sale');
   markActiveLink('stock/in');
   markActiveLink('stock/out');
+  markActiveLink('report/sale');
 
 
   $('.nav-item .nav-link').on('click', function(){
