@@ -10,7 +10,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
                     <li class="breadcrumb-item"><a href="<?= site_url('category') ?>">Categories</a></li>
-                    <li class="breadcrumb-item active">Add Categories</li>
+                    <li class="breadcrumb-item active">Data Categories</li>
                 </ol>
             </div>
         </div>

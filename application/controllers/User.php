@@ -39,9 +39,10 @@ class User extends CI_Controller {
             $post = $this->input->post(null, TRUE);
             $this->user_m->add($post);
             if($this->db->affected_rows() > 0) {
-                echo "<script>alert('Data berhasil disimpan');</script>";
+                $this->session->set_flashdata('success', 'Data berhasil disimpan');
             }
-            echo "<script>window.location='".site_url('user')."';</script>";
+            redirect('user');
+            // echo "<script>window.location='".site_url('user')."';</script>";
         }
   
     }
@@ -80,10 +81,11 @@ class User extends CI_Controller {
         } else {
             $post = $this->input->post(null, TRUE);
             $this->user_m->edit($post);
-            if($this->db->affected_rows() > 0) {
-                echo "<script>alert('Data berhasil disimpan');</script>";
+            if($this->db->affected_rows() > 0 || empty($post)) {
+                $this->session->set_flashdata('success', 'Data berhasil disimpan');
             }
-            echo "<script>window.location='".site_url('user')."';</script>";
+            redirect('user');
+            // echo "<script>window.location='".site_url('user')."';</script>";
         }
     }
     function username_check() {
@@ -99,14 +101,20 @@ class User extends CI_Controller {
     }
 
     public function del($id)
-    {
-        $id = $this->input->post('user_id');
-        $this->user_m->del($id);
+{
+    // Menghapus data user berdasarkan ID
+    $this->user_m->del($id);
 
-        if($this->db->affected_rows() > 0) {
-            echo "<script>alert('Data berhasil dihapus');</script>";
-        }
-        echo "<script>window.location='".site_url('user')."';</script>";
+    // Memeriksa apakah penghapusan berhasil
+    if ($this->db->affected_rows() > 0) {
+        // Jika berhasil, set flashdata dengan pesan sukses
+        $this->session->set_flashdata('success', 'Data berhasil dihapus');
     }
+
+    // Mengarahkan pengguna kembali ke halaman user setelah penghapusan
+    redirect('user');
+}
+
+
 
 }

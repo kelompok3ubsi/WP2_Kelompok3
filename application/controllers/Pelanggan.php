@@ -56,18 +56,20 @@ class Pelanggan extends CI_Controller {
 		}
 
 		if($this->db->affected_rows() > 0) {
-			echo "<script>alert('Data berhasil disimpan bro');</script>";
+			$this->session->set_flashdata('success', 'Data berhasil disimpan');
 		}
-		echo "<script>window.location='".site_url('customer')."';</script>"; 
+		redirect('customer');
+		// echo "<script>window.location='".site_url('customer')."';</script>"; 
 	}
 
 	public function del($id)
 	{
 		$this->customer_m->del($id);
 		if($this->db->affected_rows() > 0) {
-			echo "<script>alert('Data berhasil dihapus');</script>";
+			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}
-		echo "<script>window.location='".site_url('customer')."';</script>";
+		redirect('customer');
+		// echo "<script>window.location='".site_url('customer')."';</script>";
 	}
 
 }

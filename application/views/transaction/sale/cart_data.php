@@ -1,3 +1,4 @@
+
 <?php $no = 1;
 if($cart->num_rows() > 0) {
     foreach ($cart->result() as $c => $data) { ?>
@@ -22,7 +23,7 @@ if($cart->num_rows() > 0) {
                     class="btn btn-xs btn-primary">
                         <i class="fa fa-pencil"></i> Update
                 </button>
-                <button id="del_cart" data-cartid="<?=$data->cart_id?>" class="btn btn-xs btn-danger">
+                <button id="del_cart" data-cartid="<?=$data->cart_id?>" id="btn-hapus" class="btn btn-xs btn-danger">
                     <i class="fa fa-trash"></i> Delete
                 </button>
             </td>

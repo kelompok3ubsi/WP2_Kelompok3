@@ -56,22 +56,23 @@ class Supplier extends CI_Controller {
 		}
 
 		if($this->db->affected_rows() > 0) {
-			echo "<script>alert('Data berhasil disimpan bro');</script>";
+			$this->session->set_flashdata('success', 'Data berhasil disimpan');
 		}
-		echo "<script>window.location='".site_url('supplier')."';</script>"; 
+		redirect('supplier');
+
+		// echo "<script>window.location='".site_url('supplier')."';</script>"; 
 	}
 
 	public function del($id)
 	{
 		$this->supplier_m->del($id);
 		$error = $this->db->error();
-		if($error['code'] != 0) {
-			echo "<script>alert('Data tidak dapat dihapus (sudah dipakai tabel lain)');</script>";
-		}
 		if($this->db->affected_rows() > 0) {
-			echo "<script>alert('Data berhasil dihapus');</script>";
+			$this->session->set_flashdata('success', 'Data berhasil dihapus');
 		}
-		echo "<script>window.location='".site_url('supplier')."';</script>";
+		redirect('supplier');
+
+		// echo "<script>window.location='".site_url('supplier')."';</script>";
 	}
 
 }

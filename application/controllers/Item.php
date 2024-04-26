@@ -26,7 +26,7 @@ class item extends CI_Controller {
 				$row[] = $item->image != null ? '<img src="'.base_url('uploads/product/'.$item->image).'" class="img" style="width:100px">' : null;
 				// add html for action
 				$row[] = '<a href="'.site_url('item/edit/'.$item->item_id).'" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i> Update</a>
-					   <a href="'.site_url('item/del/'.$item->item_id).'" onclick="return confirm(\'Yakin hapus data?\')"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
+					   <a href="'.site_url('item/del/'.$item->item_id).'" id="btn-hapus"  class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</a>';
 				$data[] = $row;
 			}
 			$output = array(
@@ -139,7 +139,7 @@ class item extends CI_Controller {
 
 		} else if(isset($_POST['edit'])) {
 			if($this->item_m->check_barcode($post['barcode'], $post['id'])->num_rows() > 0) {
-				$this->session->set_flashdata('error', "Barcode $post[barcode] sudah dipakai barang lain" );
+				$this->session->set_flashdata('error', 'Barcode $post[barcode] sudah dipakai barang lain' );
 				redirect('item/edit/'.$post['id']);
 			} else {
 				if(@$_FILES['image'] ['name'] != null) {

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Sale_m extends CI_Model {
+class Report_m extends CI_Model {
 
     function invoice_no()
     {
@@ -126,16 +126,5 @@ class Sale_m extends CI_Model {
 		$query = $this->db->get();
 		return $query;
 	}
-
-    public function sale_detail()
-    {
-        $this->db->select('*, SUM(qty) as qty');
-        $this->db->from('t_sale_detail');
-        $this->db->join('p_item', 't_sale_detail.item_id = p_item.item_id');
-        $this->db->group_by('t_sale_detail.item_id');
-        $this->db->order_by('t_sale_detail.qty', 'desc');
-        $query = $this->db->get();
-        return $query;
-    }
 
 }

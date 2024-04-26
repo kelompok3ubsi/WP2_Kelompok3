@@ -19,6 +19,8 @@
    
 <!-- Main Content -->
 <section class="content">
+<div id="flash" data-flash="<?=$this->session->flashdata('success');?>"></div>
+
     <div class="card card-outline card-primary">
         <div class="card-header">
             <div class="d-flex justify-content-between">
@@ -41,7 +43,7 @@
                         <th>Name</th>
                         <th>Address</th>
                         <th>Level</th>
-                        <th>Actions</th>
+                        <th class="text-center">Actions</th>
 
                 </tr>
             </thead>
@@ -60,9 +62,9 @@
                                 <i class="fa fa-pencil-alt"></i> Update
                             </a>
                                 <input type="hidden" name="user_id" value="<?=$data->user_id?>">
-                                <button onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
-                                    <i class="fa fa-trash"></i> Delete
-                                </button>
+                                <a href="<?=site_url('user/del/'.$data->user_id)?>" id="btn-hapus" class="btn btn-danger btn-xs">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
                             </form>
                         </td>
                     </tr>

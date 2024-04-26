@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Bengkel</title>
+    <title>GarageGenius</title>
     <style type="text/css">
         html {
             font-family: "Verdana, Arial";
@@ -54,7 +54,7 @@
 <body onload="window.print()">
     <div class="content">
         <div class="title">
-            <b>Speed Bengkel</b>
+            <b>GarageGenius</b>
             <br>
             Bekasi
             <br>
@@ -156,7 +156,7 @@
         <div class="thanks">
             ---Thank You---
             <br>
-            Speed Bengkel
+            GarageGenius
         </div>
     </div>
 </body>

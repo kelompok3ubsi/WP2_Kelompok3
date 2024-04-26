@@ -10,7 +10,7 @@
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
                     <li class="breadcrumb-item"><a href="<?= site_url('unit') ?>">Units</a></li>
-                    <li class="breadcrumb-item active">Add Units</li>
+                    <li class="breadcrumb-item active">Data Units</li>
                 </ol>
             </div>
         </div>

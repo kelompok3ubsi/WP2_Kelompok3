@@ -20,6 +20,8 @@
    
 <!-- Main Content -->
 <section class="content">
+<div id="flash" data-flash="<?=$this->session->flashdata('success');?>"></div>
+
     <div class="card card-outline card-primary">
         <div class="card-header">
             <div class="d-flex justify-content-between">

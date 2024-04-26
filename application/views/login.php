@@ -21,8 +21,8 @@
   <div class="card card-outline card-primary">
   <div class="card-header text-center">
     <a href="<?=base_url()?>" class="h3">
-        <img src="<?=base_url()?>/assets/dist/img/speed.jpg" alt="speed logo" class="brand-image img-circle elevation-3" style="width: 50px; height: 50px; margin-right: 10px; opacity: .8;">
-        <b>Speed</b> Bengkel
+        <img src="<?=base_url()?>/assets/dist/img/Garage.png" alt="garage logo" class="brand-image img-circle elevation-3" style="width: 50px; height: 50px; margin-right: 10px; opacity: .8;">
+        <b>Garage</b> Genius
     </a>
 </div>
     <div class="card-body">

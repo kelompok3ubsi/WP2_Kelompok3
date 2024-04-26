@@ -19,7 +19,10 @@
    
 <!-- Main Content -->
 <section class="content">
-    <?php $this->view('messages') ?>
+    <?php
+    //  $this->view('messages') 
+    ?>
+        <div id="flash" data-flash="<?=$this->session->flashdata('success');?>"></div>
     <div class="card card-outline card-primary">
         <div class="card-header" >
             <div class="d-flex justify-content-between">
@@ -74,7 +77,7 @@
                             <a href="<?=site_url('item/edit/'.$data->item_id)?>" class="btn btn-primary btn-xs">
                                 <i class="fa fa-pencil-alt"></i> Update
                             </a>
-                            <a href="<?=site_url('item/del/'.$data->item_id)?>" onclick="return confirm('Yakin hapus data?')" class="btn btn-danger btn-xs">
+                            <a href="<?=site_url('item/del/'.$data->item_id)?>" id="btn-hapus" class="btn btn-danger btn-xs">
                                 <i class="fa fa-trash"></i> Delete
                             </a>
                         </td>
@@ -113,4 +116,70 @@
         "order": []
     });
   });
+
+  $(document).on('click', '#btn-hapus', function(e) {
+    e.preventDefault();
+    var link = $(this).attr('href');
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger mr-3"
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: "Apakah Anda yakin?",
+        text: "Data akan dihapus loh ges!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya, hapus!",
+        cancelButtonText: "Cancel",
+        reverseButtons: true,
+        showClass: {
+            popup: `
+                animate__animated
+                animate__bounceInDown
+            `
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Menggunakan AJAX untuk menghapus item
+            $.ajax({
+                type: 'GET',
+                url: link,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        // Jika penghapusan berhasil, tampilkan alert sukses
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Item berhasil dihapus!'
+                        }).then(() => {
+                            // Refresh halaman setelah menutup alert
+                            window.location.reload();
+                        });
+                    } else {
+                        // Jika terjadi kesalahan, tampilkan alert gagal
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Terjadi kesalahan saat menghapus item.'
+                        });
+                    }
+                }
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            // Tampilkan alert bahwa penghapusan dibatalkan
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Alhamdulillah, data masih aman 😊",
+                icon: "error"
+            });
+        }
+    });
+});
+
 </script>

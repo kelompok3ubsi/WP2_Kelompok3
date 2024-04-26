@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Transaction</a></li>
                     <li class="breadcrumb-item active">Sales</li>
                 </ol>
             </div>
@@ -17,6 +17,7 @@
 <section class="content">
 	<div class="row">
         <div class="col-lg-4">
+        <div id="flash" data-flash="<?=$this->session->flashdata('success');?>"></div>
 			<div class="card card-widget">
 				<div class="card-body">
                     <table width="100%">
@@ -127,7 +128,7 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Barcode</th>
                                 <th>Product Item</th>
                                 <th>Price</th>
@@ -250,6 +251,7 @@
 </section>
 
 <!-- Modal Add Product Item -->
+
 <div class="modal fade" id="modal-item">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -302,10 +304,10 @@
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
+            <h4 class="modal-title">Update Product Item</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">Update Product Item</h4>
 			</div>
 			<div class="modal-body">
                 <input type="hidden" id="cartid_item">
@@ -420,26 +422,66 @@ $(document).on('click', '#add_cart', function() {
     }
 })
 
-$(document).on('click', '#del_cart', function() {
-    if(confirm('Apakah Anda yakin?')) {
-        var cart_id = $(this).data('cartid')
-        $.ajax({
-            type: 'POST',
-            url: '<?=site_url('sale/cart_del')?>',
-            dataType: 'json',
-            data: {'cart_id': cart_id},
-            success: function(result) {
-                if(result.success == true) {
-                    $('#cart_table').load('<?=site_url('sale/cart_data')?>', function() {
-                        calculate()
-                    })
-                } else {
-                    alert('Gagal hapus item cart');
-                }
-            } 
-        })
-    }
-})
+$(document).on('click', '#del_cart', function(e) {
+    e.preventDefault();
+    var link = $(this).attr('href');
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger mr-3"
+        },
+        buttonsStyling: false
+    });
+    
+    swalWithBootstrapButtons.fire({
+        title: "Apakah anda yakin lillahi ta'ala?",
+        text: "Data akan dihapus loh ges!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya, hapus!",
+        cancelButtonText: "Cancel",
+        reverseButtons: true,
+        showClass: {
+            popup: `
+                animate__animated
+                animate__bounceInDown
+            `
+        },
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var cart_id = $(this).data('cartid');
+            $.ajax({
+                type: 'POST',
+                url: '<?=site_url('sale/cart_del')?>',
+                dataType: 'json',
+                data: {'cart_id': cart_id},
+                success: function(result) {
+                    if(result.success == true) {
+                        $('#cart_table').load('<?=site_url('sale/cart_data')?>', function() {
+                            calculate();
+                        });
+                        swalWithBootstrapButtons.fire({
+                            title: "Deleted!",
+                            text: "Data anda berhasil dihapus.",
+                            icon: "success"
+                        });
+                    } else {
+                        alert('Gagal hapus item cart');
+                    }
+                } 
+            });
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelled",
+                text: "Alhamdulillah, data masih aman 😊",
+                icon: "error"
+            });
+        }
+    });
+});
+
+
 
 $(document).on('click', '#update_cart', function() {
     $('#cartid_item').val($(this).data('cartid'))
@@ -495,20 +537,28 @@ $(document).on('click', '#edit_cart', function() {
                     'qty' : qty, 'discount' : discount, 'total' : total},
             dataType: 'json',
             success: function(result) {
-                if(result.success == true) {
+                if(result.success) {
                     $('#cart_table').load('<?=site_url('sale/cart_data')?>', function() {
-                        calculate()
-                    })
-                    alert('Item cart berhasil ter-update')
-                    $('#modal-item-edit').modal('hide')
+                        calculate();
+                    });
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Item keranjang berhasil diperbarui'
+                    });
+                    $('#modal-item-edit').modal('hide');
                 } else {
-                    alert('Data item cart tidak ter-update')
-                    $('#modal-item-edit').modal('hide')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Data item keranjang tidak terupdate'
+                    });
+                    $('#modal-item-edit').modal('hide');
                 }
             }
-        })
+        });
     }
-})
+});
 
 
 function calculate() {
@@ -545,63 +595,110 @@ $(document).ready(function() {
 
 // process payment
 $(document).on('click', '#process_payment', function() {
-    var customer_id = $('#customer').val()
-    var subtotal = $('#sub_total').val()
-    var discount = $('#discount').val()
-    var grandtotal = $('#grand_total').val()
-    var cash = $('#cash').val()
-    var change = $('#change').val()
-    var note = $('#note').val()
-    var date = $('#date').val()
-    if(subtotal < 1) {
-        alert('Belum ada product item yang dipilih')
+    var customer_id = $('#customer').val();
+    var subtotal = parseFloat($('#sub_total').val());
+    var discount = parseFloat($('#discount').val());
+    var grandtotal = parseFloat($('#grand_total').val());
+    var cash = parseFloat($('#cash').val());
+    var change = parseFloat($('#change').val());
+    var note = $('#note').val();
+    var date = $('#date').val();
+
+    if (subtotal < 1) {
+        Swal.fire({
+            text: 'Belum ada produk yang dipilih.',
+            icon: 'error'
+        })
         $('#barcode').focus()
-    } else if(cash < 1) {
-        alert('Jumlah uang cash belum diinput')
+    } else if (cash < 1) {
+        Swal.fire({
+            text: 'Jumlah uang tunai belum dimasukkan.',
+            icon: 'error'
+        })
         $('#cash').focus()
     } else {
-        if(confirm('Yakin proses transaksi ini?')) {
-            $.ajax({
-                type: 'POST',
-                url: '<?=site_url('sale/process')?>',
-                data: {'process_payment': true, 'customer_id': customer_id, 'subtotal': subtotal, 
-                    'discount': discount, 'grandtotal': grandtotal, 'cash': cash, 'change': change, 
-                    'note': note, 'date': date},
-                dataType: 'json',
-                success: function(result) {
-                    if(result.success) {
-                        alert('Transaksi berhasil');
-                        window.open('<?=site_url('sale/cetak/')?>' + result.sale_id, '_blank')
-                    } else {
-                        alert('Transaksi gagal');
+        Swal.fire({
+            title: 'Yakin proses transaksi ini?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?=site_url('sale/process')?>',
+                    data: {
+                        'process_payment': true,
+                        'customer_id': customer_id,
+                        'subtotal': subtotal,
+                        'discount': discount,
+                        'grandtotal': grandtotal,
+                        'cash': cash,
+                        'change': change,
+                        'note': note,
+                        'date': date
+                    },
+                    dataType: 'json',
+                    success: function(result) {
+                        if (result.success) {
+                            Swal.fire('Transaksi berhasil', '', 'success');
+                            window.open('<?=site_url('sale/cetak/')?>' + result.sale_id, '_blank');
+                        } else {
+                            Swal.fire('Transaksi gagal', '', 'error');
+                        }
+                        location.href = '<?=site_url('sale')?>';
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                        Swal.fire('Error', 'Terjadi kesalahan saat memproses transaksi.', 'error');
                     }
-                    location.href='<?=site_url('sale')?>'
-                }
-            })
-        }
+                });
+            }
+        });
     }
-})
+});
+
 
 $(document).on('click', '#cancel_payment', function() {
-    if(confirm('Apakah Anda yakin?')) {
-        $.ajax({
-            type: 'POST',
-            url: '<?=site_url('sale/cart_del')?>',
-            dataType: 'json',
-            data: {'cancel_payment': true},
-            success: function(result) {
-                if(result.success == true) {
-                    $('#cart_table').load('<?=site_url('sale/cart_data')?>', function() {
-                        calculate()
-                    })
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger mr-3"
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: "Apakah Anda yakin?",
+        text: "Pembayaran akan dibatalkan dan data akan direset.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya, batalkan pembayaran!",
+        cancelButtonText: "Tidak, tetap lanjutkan!",
+        reverseButtons: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'POST',
+                url: '<?=site_url('sale/cart_del')?>',
+                dataType: 'json',
+                data: {'cancel_payment': true},
+                success: function(result) {
+                    if(result.success == true) {
+                        $('#cart_table').load('<?=site_url('sale/cart_data')?>', function() {
+                            calculate();
+                        });
+                        $('#discount').val(0);
+                        $('#cash').val(0);
+                        $('#customer').val('').change();
+                        $('#barcode').val('');
+                        $('#barcode').focus();
+                    }
                 }
-            }
-        })
-        $('#discount').val(0)
-        $('#cash').val(0)
-        $('#customer').val('').change()
-        $('#barcode').val('')
-        $('#barcode').focus()
-    }
-})
+            });
+        }
+    });
+});
+
 </script>

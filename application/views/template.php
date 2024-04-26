@@ -17,17 +17,25 @@ $page = $components[2];
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Speed Bengkel</title>
+  <title>GarageGenius</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
   <link rel="stylesheet" href="<?=base_url()?>/assets/dist/css/adminlte.min.css">
+  
+  <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/sweetalert2/sweetalert2.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/sweetalert2/animate.min.css">
 
   <script src="<?=base_url()?>/assets/plugins/jquery/jquery.min.js"></script>
+  <style>
+    .swal2-popup {
+      font-size: 1.1rem !important;
+    }
+  </style>
 </head>
-<body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'tsale' ? ' sidebar-collapse' : '' ?>">
+<body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'sale' ? ' sidebar-collapse' : '' ?>">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -41,11 +49,6 @@ $page = $components[2];
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search" style="color: white;"></i>
-        </a>
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm">
@@ -67,12 +70,12 @@ $page = $components[2];
        <!-- User Account -->
         <li class="dropdown user user-menu" style="margin-top: 9px; margin-right: 15px;">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;">  
-                <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image"> 
+                <img src="<?=base_url()?>assets/dist/img/male.png" class="user-image"> 
                 <span class="hidden-xs" style="color: white; padding: 5px;"><?=$this->fungsi->user_login()->username?></span>
           </a>
             <ul class="dropdown-menu" style="background-color: #03b6fc;">
                 <li class="user-header">
-                    <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle">
+                    <img src="<?=base_url()?>assets/dist/img/male.png" class="img-circle">
                     <p><?=$this->fungsi->user_login()->name?>
                     <small style="color: black;"><?=$this->fungsi->user_login()->address?></small>
                     </p>
@@ -95,8 +98,8 @@ $page = $components[2];
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?=base_url('dashboard')?>" class="brand-link" style="background-color: #0390fc;">
-      <img src="<?=base_url()?>/assets/dist/img/speed.jpg" alt="speed logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-textbrand-text font-weight-light" style="color: white;">Speed Bengkel</span>
+      <img src="<?=base_url()?>/assets/dist/img/Garage.png" alt="garage logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-textbrand-text font-weight-light" style="color: white;"><b>GarageGenius</b></span>
     </a>
 
     <!-- Sidebar -->
@@ -104,7 +107,7 @@ $page = $components[2];
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?=base_url()?>/assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="<?=base_url()?>/assets/dist/img/male.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block"><?=ucfirst($this->fungsi->user_login()->username)?></a>
@@ -210,7 +213,7 @@ $page = $components[2];
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?=site_url('report')?>" class="nav-link">
+            <a href="<?=site_url('#')?>" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Reports
@@ -219,19 +222,19 @@ $page = $components[2];
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-              <a href="report/sale" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Sales Report</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../charts/flot.html" class="nav-link">
+              <a href="<?=site_url('stocks')?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Stocks</p>
                 </a>
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+              <a href="<?=site_url('report/sale')?>" class="nav-link">
+                <i class="far fa-chart-bar nav-icon"></i>
+                <p>Sales Report</p>
+                </a>
+              </li>
           <?php if($this->fungsi->user_login()->level == 1) { ?>
           <li class="nav-header" style="color: grey;">SETTINGS</li>
           <li class="nav-item">
@@ -279,6 +282,72 @@ $page = $components[2];
 <script src="<?=base_url()?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?=base_url()?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 
+<script src="<?=base_url()?>/assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+<script>
+var flash= $('#flash').data('flash');
+if(flash) {
+  Swal.fire({
+    icon: "success",
+    title: "Success",
+    text: flash,
+    showClass: {
+    popup: `
+      animate__animated
+      animate__jackInTheBox
+    `
+  },
+  hideClass: {
+    popup: `
+      animate__animated
+      animate__zoomOut
+    `
+  }
+  });   
+}
+
+$(document).on('click', '#btn-hapus', function(e) {
+  e.preventDefault();
+  var link = $(this).attr('href');
+
+  const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger mr-3"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "Apakah anda yakin lillahi ta'ala?",
+  text: "Data akan dihapus loh ges!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Ya, hapus!",
+  cancelButtonText: "Cancel",
+  reverseButtons: true,
+  showClass: {
+    popup: `
+      animate__animated
+      animate__bounceInDown
+    `
+  },
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location = link;
+    
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Alhamdulillah, data masih aman 😊",
+      icon: "error"
+    });
+  }
+});
+})
+</script>
+
 <script>
 $(document).ready(function(){
   function markActiveLink(selector) {
@@ -291,10 +360,10 @@ $(document).ready(function(){
   markActiveLink('category');
   markActiveLink('unit');
   markActiveLink('item');
-  markActiveLink('sale');
   markActiveLink('stock/in');
   markActiveLink('stock/out');
   markActiveLink('report/sale');
+  
 
 
   $('.nav-item .nav-link').on('click', function(){

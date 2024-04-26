@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="<?= site_url('dashboard') ?>">Home</a></li>
-                    <li class="breadcrumb-item active">Sales</li>
+                    <li class="breadcrumb-item active">Sales Report</li>
                 </ol>
             </div>
         </div>
@@ -16,7 +16,7 @@
 
 <section class="content">
 
-	<div class="card">
+    <div class="card card-outline card-primary">
         <div class="card-header">
             <h2 class="card-title">Data Penjualan</h2>
         </div>
@@ -24,7 +24,7 @@
             <table class="table table-bordered table-striped" id="table1">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>No</th>
                         <th>Invoice</th>
                         <th>Date</th>
                         <th>Customer</th>
@@ -77,7 +77,7 @@
 </section>
 
 <div class="modal fade" id="modal-detail">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
             <h4 class="modal-title">Sales Report Detail</h4>
