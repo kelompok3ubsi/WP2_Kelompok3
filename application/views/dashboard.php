@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-12 col-sm-6 col-md-3">
 				<div class="info-box" style="background-color: #078BD7;">
-					<span class="info-box-icon elevation-1" style="background-color:#FA009C"><i class="fas fa-shopping-cart"></i></span>
+					<span class="info-box-icon elevation-1" style="background-color:#F18021"><i class="fas fa-shopping-cart"></i></span>
 
 					<div class="info-box-content">
 						<span class="info-box-text" style="color: white;">Items</span>
