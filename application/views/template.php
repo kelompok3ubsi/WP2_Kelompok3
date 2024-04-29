@@ -24,9 +24,11 @@ $page = $components[2];
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 
   <link rel="stylesheet" href="<?=base_url()?>/assets/dist/css/adminlte.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css"> 
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/sweetalert2/animate.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>/assets/dist/css/style.css">
 
   <script src="<?=base_url()?>/assets/plugins/jquery/jquery.min.js"></script>
   <style>
@@ -43,7 +45,7 @@ $page = $components[2];
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-brands fa-windows"></i></a>
       </li>
     </ul>
 
@@ -81,9 +83,6 @@ $page = $components[2];
                     </p>
                 </li>
                 <li class="user-footer d-flex justify-content-between">
-                  <div style="margin-left: 5px;">
-                      <a href="#" class="btn btn-flat bg-black">Profile</a>
-                  </div>
                   <div style="margin-left: 95px;">
                       <a href="<?=site_url('auth/logout')?>" class="btn btn-flat bg-red">Sign Out</a>
                   </div>
@@ -154,87 +153,70 @@ $page = $components[2];
                   </p>
               </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-archive"></i>
-              <p>
-                Products
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?=site_url('category')?>" class="<?php if(site_url('category') == current_url()){echo "nav-link active";}else{echo "nav-link";}?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Categories</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=site_url('unit')?>" class="<?php if(site_url('unit') == current_url()){echo "nav-link active";}else{echo "nav-link";}?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Units</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=site_url('item')?>" class="<?php if(site_url('item') == current_url()){echo "nav-link active";}else{echo "nav-link";}?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Items</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="<?=site_url('#')?>" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
-              <p>
-                Transaction
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?=site_url('sale')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sales</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=site_url('stock/in')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stock In</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=site_url('stock/out')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stock Out</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="<?=site_url('#')?>" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Reports
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-              <a href="<?=site_url('stocks')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Stocks</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-              <a href="<?=site_url('report/sale')?>" class="nav-link">
+          <li class="nav-item has-treeview <?= $this->uri->segment(1) == 'category' || $this->uri->segment(1) == 'unit' || $this->uri->segment(1) == 'item' ? 'menu-open' : '' ?>">
+                            <a href="#" class="nav-link <?= $this->uri->segment(1) == 'category' || $this->uri->segment(1) == 'unit' || $this->uri->segment(1) == 'item' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-archive"></i>
+                                <p>
+                                    Products
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?= site_url('category') ?>" class="nav-link <?= $this->uri->segment(1) == 'category' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Categories</p>
+                                    </a>
+                                <li class="nav-item">
+                                    <a href="<?= site_url('unit') ?>" class="nav-link <?= $this->uri->segment(1) == 'unit' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Units</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?= site_url('item') ?>" class="nav-link <?= $this->uri->segment(1) == 'item' ? 'active' : '' ?>">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Items</p>
+                                    </a>
+                                </li>
+                        </li>
+                    </ul>
+                    </li>
+                    <li class="nav-item has-treeview <?= $this->uri->segment(1) == 'sales' || $this->uri->segment(2) == 'in' || $this->uri->segment(2) == 'out' ? 'menu-open' : '' ?>">
+                        <a href="#" class="nav-link <?= $this->uri->segment(1) == 'sales' || $this->uri->segment(2) == 'in' || $this->uri->segment(2) == 'out' ? 'active' : '' ?>">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>
+                                Transaction
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= site_url('sale') ?>" class="nav-link  <?= $this->uri->segment(1) == 'sales' ? 'active' : '' ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sales</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= site_url('stock/in'); ?>" class="nav-link <?= $this->uri->segment(2) == 'in' ? 'active' : '' ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Stock In</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="<?= site_url('stock/out'); ?>" class="nav-link <?= $this->uri->segment(2) == 'out' ? 'active' : '' ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Stock Out</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+            <li class="nav-item">
+              <a href="<?=site_url('report/sale')?>" class="nav-link <?php if(site_url('report/sale') == current_url()){echo "active";}?>">
                 <i class="far fa-chart-bar nav-icon"></i>
                 <p>Sales Report</p>
-                </a>
-              </li>
+              </a>
+            </li>
           <?php if($this->fungsi->user_login()->level == 1) { ?>
           <li class="nav-header" style="color: grey;">SETTINGS</li>
           <li class="nav-item">
@@ -330,7 +312,6 @@ swalWithBootstrapButtons.fire({
     window.location = link;
     
   } else if (
-    /* Read more about handling dismissals below */
     result.dismiss === Swal.DismissReason.cancel
   ) {
     swalWithBootstrapButtons.fire({
@@ -343,30 +324,6 @@ swalWithBootstrapButtons.fire({
 })
 </script>
 
-<script>
-$(document).ready(function(){
-  function markActiveLink(selector) {
-    if(window.location.href.indexOf(selector) > -1) {
-      $('.nav-item:has(a[href*="' + selector + '"])').parents('.nav-item').addClass('menu-open');
-      $('a[href*="' + selector + '"]').addClass('active');
-    }
-  }
-
-  markActiveLink('category');
-  markActiveLink('unit');
-  markActiveLink('item');
-  markActiveLink('stock/in');
-  markActiveLink('stock/out');
-  markActiveLink('report/sale');
-  
-
-
-  $('.nav-item .nav-link').on('click', function(){
-    $('.nav-item .nav-link').removeClass('active');
-    $(this).addClass('active');
-  });
-});
-</script>
 
 <script>
   $(document).ready(function() {
