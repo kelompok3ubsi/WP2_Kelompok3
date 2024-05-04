@@ -331,12 +331,13 @@ swalWithBootstrapButtons.fire({
   })
 </script>
 
-</body>
-</html>
-
 <footer class="main-footer" style="background-color: black;">
     <div class="float-right d-none d-sm-block" style="color: white;">
       <b>Version</b> 3.2.0
     </div>
     <strong style="color: white;">Copyright &copy; 2024 <a href="https://www.instagram.com/assuraa_">Muhammad Helmi Assura</a>.</strong> All rights reserved.
-  </footer>
+</footer>
+
+</body>
+</html>
+

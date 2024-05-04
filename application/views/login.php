@@ -17,10 +17,14 @@
   <!-- Custom CSS untuk latar belakang -->
   <style>
     body {
-      background-image: url('<?=base_url()?>assets/dist/img/moon.jpg');
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
+      transition: background-image 5s ease-out;
     }
 
     .login-box {
@@ -32,8 +36,8 @@
 
     .logo {
       position: absolute;
-      top: 30px;
-      left: 20px;
+      top: 20px;
+      left: 0px;
       width: 160px;
       height: auto;
       opacity: 0.8;
@@ -52,14 +56,12 @@
     outline: 2px solid #0ef;
     box-shadow: 0 0 30px #0ef;
     }
-
-  </style>
+</style>
 </head>
 <body class="hold-transition login-page">
 <div class="curved-shape"></div>
 <div class="login-box">
-    <img src="<?=base_url()?>/assets/dist/img/Garage.png" class="logo" style="width: 150px; height: 150px;">
-  <!-- /.login-logo -->
+    <img src="<?=base_url()?>/assets/dist/img/Garage.png" class="logo" style="width: 180px; height: 180px;">
   <div class="card" style="background-color:#000000;">
     <div class="card-header text-center">
       <a href="<?=base_url()?>" class="h3" style="color:white;">
@@ -114,3 +116,24 @@
 <script src="<?=base_url()?>assets/dist/js/adminlte.min.js"></script>
 </body>
 </html>
+
+<script>
+    var backgrounds = [
+        '<?=base_url()?>assets/dist/img/moon.jpg',
+        '<?=base_url()?>assets/dist/img/img6.jpg',
+        '<?=base_url()?>assets/dist/img/img4.jpg',
+        '<?=base_url()?>assets/dist/img/img3.jpg',
+        '<?=base_url()?>assets/dist/img/img5.jpg',
+        '<?=base_url()?>assets/dist/img/img2.jpg'
+    ];
+
+    var currentBackgroundIndex = 0;
+
+    function changeBackground() {
+        document.body.style.backgroundImage = 'url(' + backgrounds[currentBackgroundIndex] + ')';
+        currentBackgroundIndex = (currentBackgroundIndex + 1) % backgrounds.length;
+    }
+
+    changeBackground(); 
+    setInterval(changeBackground, 10000); 
+</script>

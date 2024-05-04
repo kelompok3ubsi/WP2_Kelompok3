@@ -66,6 +66,14 @@ class item_m extends CI_Model {
         return $query;
     }
 
+    public function get_dashboard_data()
+    {
+        $this->db->select('p_item.*, p_item.name as item_name');
+        $this->db->from('p_item');
+        $this->db->join('p_category', 'p_item.category_id = p_category.category_id');
+        return $this->db->get()->result();
+    }
+
     public function add($post)
     {
         $params = [

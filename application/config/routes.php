@@ -67,3 +67,5 @@ $route['stock/out'] = 'stock/stock_out_data';
 $route['stock/out/add'] = 'stock/stock_out_add';
 $route['stock/out/del/(:num)/(:num)'] = 'stock/stock_out_del';
 
+
+

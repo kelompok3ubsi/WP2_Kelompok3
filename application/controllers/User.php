@@ -102,16 +102,10 @@ class User extends CI_Controller {
 
     public function del($id)
 {
-    // Menghapus data user berdasarkan ID
     $this->user_m->del($id);
-
-    // Memeriksa apakah penghapusan berhasil
     if ($this->db->affected_rows() > 0) {
-        // Jika berhasil, set flashdata dengan pesan sukses
         $this->session->set_flashdata('success', 'Data berhasil dihapus');
     }
-
-    // Mengarahkan pengguna kembali ke halaman user setelah penghapusan
     redirect('user');
 }
 

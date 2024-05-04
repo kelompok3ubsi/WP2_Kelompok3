@@ -13,15 +13,21 @@
     border-bottom-right-radius: 40px;
 }
 
-.info-box:hover {
+.small-box:hover {
     background-color: black;
 }
 
-.info-box-text,
-.info-box-number {
+.small-box-text {
     font-weight: bold;
     color:white;
 }
+
+
+.small-box-number {
+    font-weight: bold;
+    color:black;
+}
+
 .info-box:hover .info-box-text,
 .info-box:hover .info-box-number {
     font-weight: bold;

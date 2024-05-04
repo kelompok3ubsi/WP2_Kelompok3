@@ -35,16 +35,21 @@ class item extends CI_Controller {
 						"recordsFiltered" => $this->item_m->count_filtered(),
 						"data" => $data,
 					);
-			// output to json format
 			echo json_encode($output);
 		}
 	
-	public function index()
-	{
-		$data['row'] = $this->item_m->get();
-		$this->template->load('template', 'product/item/item_data', $data);
-	}
-
+		public function index()
+		{
+			$data['row'] = $this->item_m->get();
+			$this->template->load('template', 'product/item/item_data', $data);
+		}
+		
+		public function dashboard_data()
+		{
+			$data['items'] = $this->item_m->get_dashboard_data();		
+			$this->load->view('dashboard', $data);
+		}
+		
 	public function add() 
 	{
 		$item = new stdClass();

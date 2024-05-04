@@ -21,7 +21,7 @@
 				</ol>
 			</div>
 		</div>
-	</div><!-- /.container-fluid -->
+	</div>
 </section>
 
 <!-- Main content -->
@@ -31,89 +31,117 @@
 		<div class="berhasil-login" data-flashdata="<?= $this->session->flashdata('pesan') ?>">
 		</div>
 		<div class="row">
-			<div class="col-12 col-sm-6 col-md-3">
-				<div class="info-box">
-					<span class="info-box-icon elevation-1" style="background-color:#F18021"><i class="fas fa-shopping-cart"></i></span>
+		<div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+              <h4 style="color:black; margin-top:5px;"><b>Total</b></h4>
 
-					<div class="info-box-content">
-						<a href="<?= site_url('item') ?>">
-							<span class="info-box-text">Items</span>
-							<span class="info-box-number"><?=$this->fungsi->count_item()?></span>
-						</a>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<div class="col-12 col-sm-6 col-md-3">
-				<div class="info-box mb-3">
-				<span class="info-box-icon elevation-1" style="background-color:#FA0000;"><i class="fas fa-truck" style="color:#ECE7E7;"></i></span>
+              <p style="color:#ECEAE9; margin-top:20px;"><b><?=$this->fungsi->count_item()?> Items</b></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-shopping-cart"></i>
+              </div>
+              <a href="<?= site_url('item') ?>" class="small-box-footer" id="item">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+              <h4 style="color:black; margin-top:5px;"><b>Total</b></h4>
 
-					<div class="info-box-content">
-					<a href="<?= site_url('supplier') ?>">
-						<span class="info-box-text">Suppliers</span>
-						<span class="info-box-number"><?=$this->fungsi->count_supplier()?></span>
-					</a>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
+              <p style="color:#ECEAE9; margin-top:20px;"><b><?=$this->fungsi->count_supplier()?> Suppliers</b></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-truck"></i>
+              </div>
+              <a href="<?= site_url('supplier') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box" style="background-color:orange;">
+              <div class="inner">
+                <h4 style="color:black; margin-top:5px;"><b>Total</b></h4>
 
-			<!-- fix for small devices only -->
-			<div class="clearfix hidden-md-up"></div>
+                <p style="color:#ECEAE9; margin-top:20px;"><b><?=$this->fungsi->count_customer()?> Customers</b></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-users"></i>
+              </div>
+              <a href="<?= site_url('customer') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+              <h4 style="color:black; margin-top:5px;"><b>Total</b></h4>
 
-			<div class="col-12 col-sm-6 col-md-3">
-			<div class="info-box mb-3">
-				<span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
-
-					<div class="info-box-content">
-					<a href="<?= site_url('customer') ?>">
-						<span class="info-box-text">Customers</span>
-						<span class="info-box-number"><?=$this->fungsi->count_customer()?></span>
-					</a>
-					</div>
-					<!-- /.info-box-content -->
-				</div>
-				<!-- /.info-box -->
-			</div>
-			<!-- /.col -->
-			<?php if ($this->fungsi->user_login()->level == 1) { ?>
-				<div class="col-12 col-sm-6 col-md-3">
-				<div class="info-box mb-3">
-					<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-plus"></i></span>
-
-						<div class="info-box-content">
-						<a href="<?= site_url('user') ?>">
-							<span class="info-box-text">Users</span>
-							<span class="info-box-number"><?=$this->fungsi->count_user()?></span>
-						</a>
-						</div>
-						<!-- /.info-box-content -->
-					</div>
-					<!-- /.info-box -->
-				</div>
-			<?php } ?>
+              <p style="color:#ECEAE9; margin-top:20px;"><b><?=$this->fungsi->count_user()?> Users</b></p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-user"></i>
+              </div>
+              <a href="<?=site_url('user')?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
 			<!-- /.col -->
 		</div>
 
 		<div class="card card-primary">
-		<div class="card-header">
-			<h3 class="card-title"><i class="fa-solid fa-chart-pie"  style="color:black; margin-right:5px;"></i> <b> Static Penjualan</b></h3>
-			<div class="card-tools">
-				<button type="button" class="btn btn-tool" data-card-widget="collapse">
-					<i class="fas fa-minus"></i>
-				</button>
-			</div>
-		</div>
-		<div class="card-body" style="background-color:black;">
-			<div class="chart">
-				<canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-			</div>
-		</div>
-		</div>
+    <div class="card-header">
+        <h3 class="card-title"><i class="fas fa-chart-pie" style="color:black; margin-right:5px;"></i><b> Static Penjualan</b></h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body" style="background-color:black;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="chart">
+                    <canvas id="areaChart" style="min-height: 350px; height: 250px; max-height: 350px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="goal-completion">
+                    <p class="text-center text-white"><strong>Completion Total Stock</strong></p>
+					<?php foreach ($item as $item): ?>
+						<div class="progress-group">
+							<span class="text-white"><?= $item->name ?></span>
+							<span class="float-right text-white"><b><?= $item->stock ?></b>/400</span>
+							<?php
+								$progress_color = '';
+								if ($item->stock <= 100) {
+									$progress_color = 'bg-danger'; 
+								} elseif ($item->stock <= 200) {
+									$progress_color = 'bg-warning';
+								} elseif ($item->stock <= 300) {
+									$progress_color = 'bg-info';
+								} else {
+									$progress_color = 'bg-success';
+								}
+							?>
+							<div class="progress progress-sm">
+								<div class="progress-bar <?= $progress_color ?>" style="width: <?= ($item->stock / 400) * 100 ?>%"></div>
+							</div>
+						</div>
+					<?php endforeach; ?>
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+
+
 
 		<div class="row">
 			<div class="col-12">
@@ -173,6 +201,7 @@
 				</div>
 			</div>
 		</div>
+		
 
 
 <script>
@@ -205,7 +234,7 @@
                     pointStrokeColor: '#c1c7d1',
                     pointHighlightFill: '#fff',
                     pointHighlightStroke: 'rgba(220,220,220,1)',
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: [65, 20, 80, 61, 56, 55, 40, 20]
                 },
             ]
         };
@@ -242,6 +271,41 @@
             options: areaChartOptions
         });
     });
+
+
+	 //-------------
+    //- DONUT CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          'Chrome',
+          'IE',
+          'FireFox',
+          'Safari',
+          'Opera',
+          'Navigator',
+      ],
+      datasets: [
+        {
+          data: productQtys,
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de', '#ffffff', '#ffffff'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions
+    })
+
 </script>
 
 
