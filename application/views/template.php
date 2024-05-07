@@ -75,7 +75,7 @@ $page = $components[2];
                 <img src="<?=base_url()?>assets/dist/img/male.png" class="user-image"> 
                 <span class="hidden-xs" style="color: white; padding: 5px;"><?=$this->fungsi->user_login()->username?></span>
           </a>
-            <ul class="dropdown-menu" style="background-color: #03b6fc;">
+            <ul class="dropdown-menu" style="background-color: #EE7234;">
                 <li class="user-header">
                     <img src="<?=base_url()?>assets/dist/img/male.png" class="img-circle">
                     <p><?=$this->fungsi->user_login()->name?>
@@ -241,7 +241,12 @@ $page = $components[2];
   </div>
   <!-- /.content-wrapper -->
 
-
+  <footer class="main-footer" style="background-color: black;">
+    <div class="float-right d-none d-sm-block" style="color: white;">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong style="color: white;">Copyright &copy; 2024 <a href="https://www.instagram.com/assuraa_">Muhammad Helmi Assura</a>.</strong> All rights reserved.
+</footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -331,13 +336,6 @@ swalWithBootstrapButtons.fire({
   })
 </script>
 
-<footer class="main-footer" style="background-color: black;">
-    <div class="float-right d-none d-sm-block" style="color: white;">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong style="color: white;">Copyright &copy; 2024 <a href="https://www.instagram.com/assuraa_">Muhammad Helmi Assura</a>.</strong> All rights reserved.
-</footer>
 
 </body>
 </html>
-

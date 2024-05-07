@@ -34,7 +34,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+</div>
         <div class="card-body">
             <div>
                 <div class="col-md-4 mx-auto">
