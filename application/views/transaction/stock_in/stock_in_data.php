@@ -1,3 +1,30 @@
+<style>
+    .create {
+  font-size: 15px;
+  padding: 0rem 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: rgb(14, 14, 26);
+  color: rgb(234, 234, 234);
+  font-weight: 700;
+  transition: 0.6s;
+  box-shadow: 0px 0px 60px #1f4c65;
+}
+
+.create:active {
+  scale: 0.92;
+}
+
+.create:hover {
+  background: rgb(2,29,78);
+  background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+  color: rgb(4, 4, 38);
+}
+</style>
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -29,11 +56,9 @@
                 <div class="pull-right" style="margin-top: 15px; margin-left: 10px;">
                     <h3 class="box-title">Data Stock In</h3>
                 </div>
-                <div class="col-md-6 text-right" style="margin-top: 10px; margin-right: 10px;">
-                    <a href="<?=site_url('stock/in/add')?>" class="btn btn-primary btn-flat">
-                        <i class="fa fa-plus"></i> Add Stock In
-                    </a>
-                </div>
+                <button class="create" onclick="window.location.href='<?=site_url('stock/in/add')?>'">
+                    <i class="fa fa-plus"></i> Add Stock In
+                </button>
             </div>
         </div>
         <div class="card-body table-responsive">

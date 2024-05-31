@@ -36,8 +36,8 @@
 
     .logo {
       position: absolute;
-      top: 20px;
-      left: 0px;
+      top: 10px;
+      left: -10px;
       width: 160px;
       height: auto;
       opacity: 0.8;
@@ -45,16 +45,16 @@
     }
 
     .curved-shape {
-    position: absolute;
-    left: 0;
-    bottom: 300px;
-    height: 600px;
-    width: 550px;
-    background: linear-gradient(45deg, rgba(0, 0, 0), rgba(0, 0, 0));
-    transform: rotate(-20deg) skewY(-25deg);
-    transform-origin: bottom left;
-    outline: 2px solid #0ef;
-    box-shadow: 0 0 30px #0ef;
+      position: absolute;
+      left: 0;
+      bottom: 350px;
+      height: 600px;
+      width: 550px;
+      background: linear-gradient(45deg, rgba(0, 0, 0), rgba(0, 0, 0));
+      transform: rotate(-20deg) skewY(-20deg);
+      transform-origin: bottom left;
+      outline: 2px solid #0ef;
+      box-shadow: 0 0 30px #0ef;
     }
 </style>
 </head>
@@ -135,5 +135,5 @@
     }
 
     changeBackground(); 
-    setInterval(changeBackground, 10000); 
+    setInterval(changeBackground, 20000); 
 </script>

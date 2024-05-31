@@ -75,7 +75,7 @@ $page = $components[2];
                 <img src="<?=base_url()?>assets/dist/img/male.png" class="user-image"> 
                 <span class="hidden-xs" style="color: white; padding: 5px;"><?=$this->fungsi->user_login()->username?></span>
           </a>
-            <ul class="dropdown-menu" style="background-color: #EE7234;">
+            <ul class="dropdown-menu" style="background-color: #03b6fc;">
                 <li class="user-header">
                     <img src="<?=base_url()?>assets/dist/img/male.png" class="img-circle">
                     <p><?=$this->fungsi->user_login()->name?>
@@ -339,3 +339,4 @@ swalWithBootstrapButtons.fire({
 
 </body>
 </html>
+

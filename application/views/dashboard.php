@@ -147,7 +147,10 @@
 			<div class="col-12">
 				<div class="card card-primary">
 					<div class="card-header border-0" style="margin-top:6px;">
-						<h3 class="card-title"><i class="fa-solid fa-money-bill-trend-up" style="color:black; margin-right:5px;"></i> <b> Products In Demand</b></h3>
+						<h3 class="card-title">
+							<i class="fa-solid fa-money-bill-trend-up" style="color:black; margin-right:5px;"></i> 
+							<b> Products In Demand</b>
+						</h3>
 						<div class="card-tools">
 							<a href="#" class="btn btn-tool btn-sm">
 								<i class="fas fa-download"></i>
@@ -201,7 +204,7 @@
 				</div>
 			</div>
 		</div>
-              </div>
+	</div>
 		
 
 
@@ -277,7 +280,6 @@
 	 //-------------
     //- DONUT CHART -
     //-------------
-    // Get context with jQuery - using jQuery's .get() method.
     var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
     var donutData        = {
       labels: [
