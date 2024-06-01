@@ -35,6 +35,70 @@ $page = $components[2];
     .swal2-popup {
       font-size: 1.1rem !important;
     }
+
+
+    .logout {
+  --black: #000000;
+  --ch-black: #141414;
+  --eer-black: #1b1b1b;
+  --night-rider: #2e2e2e;
+  --white: #ffffff;
+  --af-white: #f3f3f3;
+  --ch-white: #e1e1e1;
+  border-radius: 8px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0px 15px;
+  border: none;
+  color: var(--white);
+  position: relative;
+  cursor: pointer;
+  font-weight: 700;
+  transition-duration: .2s;
+  background-color: var(--ch-black);
+  text-transform: uppercase;
+}
+
+.logout:before, .logout:after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, 
+  var(--ch-black), var(--eer-black),
+  var(--night-rider), var(--ch-white), var(--night-rider), 
+	var(--eer-black), var(--ch-black),var(--ch-black));
+  background-size: 400%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.logout:after {
+  filter: blur(50px);
+}
+
+
   </style>
 </head>
 <body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'sale' ? ' sidebar-collapse' : '' ?>">
@@ -82,11 +146,14 @@ $page = $components[2];
                     <small style="color: black;"><?=$this->fungsi->user_login()->address?></small>
                     </p>
                 </li>
-                <li class="user-footer d-flex justify-content-between">
-                  <div style="margin-left: 95px;">
-                      <a href="<?=site_url('auth/logout')?>" class="btn btn-flat bg-red">Sign Out</a>
-                  </div>
-                </li>
+                <li class="user-footer d-flex justify-content-between" style="background-color: var(--black);">
+  <div style="margin-left: 65px;">
+    <button class="logout" onclick="window.location.href='<?=site_url('auth/logout')?>'">
+      Sign Out
+    </button>
+  </div>
+</li>
+
             </ul>
         </li>
     </ul>

@@ -58,7 +58,8 @@
                             data-uang_kembalian="<?=indo_currency($data->uang_kembalian)?>"
                             data-note="<?=$data->note?>"
                             data-cashier="<?=ucfirst($data->user_name)?>"
-                            data-saleid="<?=$data->sale_id?>">Detail</button>
+                            data-saleid="<?=$data->sale_id?>">
+                            <i class="fa fa-eye"></i>Detail</button>
                             <a href="<?=site_url('sale/cetak/'.$data->sale_id)?>" target="_blank" class="btn btn-info btn-xs">
                                 <i class="fa fa-print"></i> Print
                             </a>

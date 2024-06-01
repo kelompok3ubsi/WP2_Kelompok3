@@ -56,6 +56,62 @@
       outline: 2px solid #0ef;
       box-shadow: 0 0 30px #0ef;
     }
+    
+  
+    
+    .sign {
+  background-image: linear-gradient(to right bottom, #e300ff, #ff00aa, #ff5956, #ffb900, #fffe00);
+  border: none;
+  font-size: 14px;
+  border-radius: 0;
+  padding: 4px;
+  transition: border-top-left-radius 0.2s ease-in, 
+  border-top-right-radius 0.2s ease-in 0.15s, 
+  border-bottom-right-radius 0.2s ease-in 0.3s,
+  border-bottom-left-radius 0.2s ease-in 0.45s, 
+  padding 0.2s ease-in;
+  position: relative;
+  margin: -28px;
+}
+
+.sign__int {
+  background-color: #212121;
+  color: white;
+  border-radius: 0;
+  padding: 5px 40px;
+  transition: all 0.2s ease-in,
+  border-top-left-radius 0.2s ease-in, 
+  border-top-right-radius 0.2s ease-in 0.15s, 
+  border-bottom-right-radius 0.2s ease-in 0.3s,
+  border-bottom-left-radius 0.2s ease-in 0.45s,
+  padding 0.2s ease-in;
+  font-weight: 600;
+  z-index: -1;
+  box-shadow: -25px -10px 30px -5px rgba(225, 0, 255, 0.7),
+    25px -10px 30px -5px rgba(255, 0, 212, 0.7),
+    25px 10px 30px -5px rgba(255, 174, 0, 0.7),
+    -25px 10px 30px -5px rgba(255, 230, 0, 0.7);
+}
+
+.sign:active .sign__int {
+  padding: 10px 30px;
+}
+
+.sign:hover {
+  border-radius: 1.5em;
+}
+
+.sign:hover .sign__int {
+  border-radius: 1.3em;
+}
+
+.sign:hover .sign__int {
+  box-shadow: -15px -10px 30px -5px rgba(225, 0, 255, 0.8),
+    15px -10px 30px -5px rgba(255, 0, 212, 0.8),
+    15px 10px 30px -5px rgba(255, 174, 0, 0.8),
+    -15px 10px 30px -5px rgba(255, 230, 0.8);
+}
+
 </style>
 </head>
 <body class="hold-transition login-page">
@@ -96,7 +152,11 @@
             </div>
             <!-- /.col -->
             <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block" name="login">Sign In</button>
+                <button type="submit" class="sign" name="login">
+                <div class="sign__int">
+                  <span class="sign__span">Login</span>
+                </div>
+                </button>
             </div>
             <!-- /.col -->
         </div>

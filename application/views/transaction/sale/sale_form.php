@@ -1,5 +1,5 @@
 <style>
-    .button {
+.button {
   text-decoration: none;
   line-height: 1;
   border-radius: 1.5rem;
@@ -8,7 +8,7 @@
   box-shadow: 10px 10px 20px rgba(0,0,0,.05);
   background-color: #fff;
   color: #121212;
-  border: none;
+  border: 0px; 
   cursor: pointer;
 }
 
@@ -27,6 +27,8 @@
   font-weight: 600;
   position: relative;
   overflow: hidden;
+  z-index: 1;
+  border-radius: inherit;
 }
 
 .button__icon {
@@ -56,154 +58,144 @@
   transform: translate(0);
 }
 
-.voltage-button {
+
+
+.cancel {
+  line-height: 2.5;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.0rem;
+  background-color: orange;
+  color: #fff;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  padding: .10rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color .3s;
+  margin-left: 5px;
+}
+
+.cancel__icon-wrapper {
+  flex-shrink: 0;
+  width: 25px;
+  height: 25px;
   position: relative;
+  color: var(--clr);
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
-.voltage-button button {
+.cancel:hover {
+  background-color: #000;
+}
+
+.cancel:hover .cancel__icon-wrapper {
+  color: #000;
+}
+
+.cancel_text {
+  display: inline-block;
+  transition: color .2s;
+  padding: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  color: black;
+}
+
+.cancel:hover .cancel_text {
   color: white;
-  background: orange;
-  padding: 1rem 2rem 1rem 2rem;
-  border-radius: 5rem;
-  border: 5px solid #5978F3;
-  font-size: 14px;
-  line-height: 1em;
-  letter-spacing: 0.075em;
-  transition: background 0.3s;
 }
 
-.voltage-button button:hover {
+.cancel__icon-svg--copy {
+  position: absolute;
+  transform: translate(-150%, 150%);
+}
+
+.cancel:hover .cancel__icon-svg:first-child {
+  transition: transform .3s ease-in-out;
+  transform: translate(150%, -150%);
+}
+
+.cancel:hover .cancel__icon-svg--copy {
+  transition: transform .3s ease-in-out .1s;
+  transform: translate(0);
+}
+
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
   cursor: pointer;
-  background: #0F1C53;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: black;
 }
 
-.voltage-button button:hover + svg, .voltage-button button:hover + svg + .dots {
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.add:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.add:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.add:hover .text {
   opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
 }
-
-.voltage-button svg {
-  display: block;
-  position: absolute;
-  top: -0.75em;
-  left: -0.25em;
-  width: calc(100% + 0.5em);
-  height: calc(100% + 1.5em);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.4s;
-  transition-delay: 0.1s;
-}
-
-.voltage-button svg path {
-  stroke-dasharray: 100;
-  filter: url("#glow");
-}
-
-.voltage-button svg path.line-1 {
-  stroke: #f6de8d;
-  stroke-dashoffset: 0;
-  animation: spark-1 3s linear infinite;
-}
-
-.voltage-button svg path.line-2 {
-  stroke: #6bfeff;
-  stroke-dashoffset: 500;
-  animation: spark-2 3s linear infinite;
-}
-
-.voltage-button .dots {
-  opacity: 0;
-  transition: opacity 0.3s;
-  transition-delay: 0.4s;
-}
-
-.voltage-button .dots .dot {
-  width: 1rem;
-  height: 1rem;
-  background: white;
-  border-radius: 100%;
-  position: absolute;
-  opacity: 0;
-}
-
-.voltage-button .dots .dot-1 {
-  top: 0;
-  left: 20%;
-  animation: fly-up 3s linear infinite;
-}
-
-.voltage-button .dots .dot-2 {
-  top: 0;
-  left: 55%;
-  animation: fly-up 3s linear infinite;
-  animation-delay: 0.5s;
-}
-
-.voltage-button .dots .dot-3 {
-  top: 0;
-  left: 80%;
-  animation: fly-up 3s linear infinite;
-  animation-delay: 1s;
-}
-
-.voltage-button .dots .dot-4 {
-  bottom: 0;
-  left: 30%;
-  animation: fly-down 3s linear infinite;
-  animation-delay: 2.5s;
-}
-
-.voltage-button .dots .dot-5 {
-  bottom: 0;
-  left: 65%;
-  animation: fly-down 3s linear infinite;
-  animation-delay: 1.5s;
-}
-
-@keyframes spark-1 {
-  to {
-    stroke-dashoffset: -1000;
-  }
-}
-
-@keyframes spark-2 {
-  to {
-    stroke-dashoffset: -500;
-  }
-}
-
-@keyframes fly-up {
-  0% {
-    opacity: 0;
-    transform: translateY(0) scale(0.2);
-  }
-
-  5% {
-    opacity: 1;
-    transform: translateY(-1.5rem) scale(0.4);
-  }
-
-  10%, 100% {
-    opacity: 0;
-    transform: translateY(-3rem) scale(0.2);
-  }
-}
-
-@keyframes fly-down {
-  0% {
-    opacity: 0;
-    transform: translateY(0) scale(0.2);
-  }
-
-  5% {
-    opacity: 1;
-    transform: translateY(1.5rem) scale(0.4);
-  }
-
-  10%, 100% {
-    opacity: 0;
-    transform: translateY(3rem) scale(0.2);
-  }
+/* button click effect*/
+.add:active {
+  transform: translate(2px ,2px);
 }
 
 </style>
@@ -308,8 +300,14 @@
                             <td></td>
                             <td>
                                 <div>
-                                    <button type="button" id="add_cart" class="btn btn-primary">
-                                        <i class="fa fa-cart-plus"></i> Add
+                                    <button type="button" id="add_cart" class="add">
+                                    <div class="sign">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                                    </svg>
+
+                                    </div>
+                                    <div class="text"> Add to cart</div>
                                     </button>
                                 </div>
                             </td>
@@ -449,9 +447,18 @@
 
         <div class="col-lg-3">
             <div>
-                <button class="cancel" id="cancel_payment" class="btn btn-flat btn-warning">
-                    <i class="fa fa-refresh"></i> Cancel
-                </button><br><br>
+            <button class="cancel" id="cancel_payment" style="--clr: #7808d0">
+                <span class="cancel__icon-wrapper">
+                    <svg width="20" class="cancel__icon-svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.13-.31 2.17-.84 3.06L18.6 16.9c.64-1.14 1-2.46 1-3.9 0-4.42-3.58-8-8-8zm0 16c-3.31 0-6-2.69-6-6 0-1.13.31-2.17.84-3.06L5.4 7.1C4.76 8.24 4.4 9.56 4.4 11c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                    </svg>
+                    
+                    <svg width="20" class="cancel__icon-svg cancel__icon-svg--copy" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.13-.31 2.17-.84 3.06L18.6 16.9c.64-1.14 1-2.46 1-3.9 0-4.42-3.58-8-8-8zm0 16c-3.31 0-6-2.69-6-6 0-1.13.31-2.17.84-3.06L5.4 7.1C4.76 8.24 4.4 9.56 4.4 11c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>
+                    </svg>
+                </span>
+                <span class="cancel_text">Cancel</span>
+            </button><br><br>
                 <button class="button" id="process_payment" style="--clr: #00ad54;">
                     <span class="button-decor"></span>
                     <div class="button-content">
