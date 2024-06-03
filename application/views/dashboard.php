@@ -152,12 +152,9 @@
 							<b> Products In Demand</b>
 						</h3>
 						<div class="card-tools">
-							<a href="#" class="btn btn-tool btn-sm">
-								<i class="fas fa-download"></i>
-							</a>
-							<a href="#" class="btn btn-tool btn-sm">
-								<i class="fas fa-bars"></i>
-							</a>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
 						</div>
 					</div>
 					<div class="card-body table-responsive">

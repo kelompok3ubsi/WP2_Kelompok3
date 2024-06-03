@@ -99,6 +99,101 @@ $page = $components[2];
 }
 
 
+
+
+.main-footer {
+            background-color: black;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .pyramid-loader {
+            position: relative;
+            margin-right: 20px;
+            width: 70px;  
+            height: 70px; 
+            display: block;
+            transform-style: preserve-3d;
+            transform: rotateX(-20deg);
+        }
+
+        .piramid {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        .piramid .side {
+            width: 70px;
+            height: 70px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform-origin: center top;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .piramid .side1 {
+            transform: rotateZ(-30deg) rotateY(90deg);
+            background: conic-gradient(#2BDEAC, #F028FD, #D8CCE6, #2F2585);
+        }
+
+        .piramid .side2 {
+            transform: rotateZ(30deg) rotateY(90deg);
+            background: conic-gradient(#2F2585, #D8CCE6, #F028FD, #2BDEAC);
+        }
+
+        .piramid .side3 {
+            transform: rotateX(30deg);
+            background: conic-gradient(#2F2585, #D8CCE6, #F028FD, #2BDEAC);
+        }
+
+        .piramid .side4 {
+            transform: rotateX(-30deg);
+            background: conic-gradient(#2BDEAC, #F028FD, #D8CCE6, #2F2585);
+        }
+
+        .piramid .shadow {
+            width: 60px;
+            height: 60px;
+            background: #8B5AD5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotateX(90deg) translateZ(-40px);
+            filter: blur(12px);
+        }
+
+        .footer-text {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
   </style>
 </head>
 <body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'sale' ? ' sidebar-collapse' : '' ?>">
@@ -308,12 +403,22 @@ $page = $components[2];
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer" style="background-color: black;">
-    <div class="float-right d-none d-sm-block" style="color: white;">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong style="color: white;">Copyright &copy; 2024 <a href="https://www.instagram.com/assuraa_">Muhammad Helmi Assura</a>.</strong> All rights reserved.
-</footer>
+  <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-text">
+                <strong>Copyright &copy; 2024 <a href="https://www.instagram.com/assuraa_" style="color: #0073FE;">GarageGenius</a>.</strong> All rights reserved.
+            </div>
+            <div class="pyramid-loader">
+                <div class="piramid">
+                    <span class="side side1"></span>
+                    <span class="side side2"></span>
+                    <span class="side side3"></span>
+                    <span class="side side4"></span>
+                    <span class="shadow"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
