@@ -9,7 +9,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+  <!-- logoweb -->
   <link href="assets/dist/img/symbol.png" rel="icon" style="radius: 50%;">
 
   <!-- Google Fonts -->
@@ -1826,7 +1826,7 @@ section {
 
         <div class="row portfolio-container">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="bukti1 col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-img"><img src="assets/image/bukti1.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
             <h4>Foto Dengan Mekanik Bengkel</h4>
@@ -1835,7 +1835,7 @@ section {
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="bukti2 col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-img"><img src="assets/image/bukti2.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Wawancara di Bengkel</h4>
@@ -1844,7 +1844,7 @@ section {
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="bukti3 col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-img"><img src="assets/image/bukti3.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Anggota Team</h4>
@@ -1940,4 +1940,8 @@ sr.reveal(`.viewproject`)
 sr.reveal(`.cardproject`, {delay: 600, distance: '100px', interval: 100})
 sr.reveal(`.portfol`)
 sr.reveal(`.coin`, {origin: 'right'})
+sr.reveal(`.bukti1`, {origin: 'left'})
+sr.reveal(`.bukti2`, {origin: 'bottom'})
+sr.reveal(`.bukti3`, {origin: 'right'})
+
     </script>
