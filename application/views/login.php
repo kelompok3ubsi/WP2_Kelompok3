@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="<?=base_url()?>assets/dist/img/symbol.png" rel="icon" style="radius: 50%;">
   <title>Log In</title>
 
   <!-- Google Font: Source Sans Pro -->
@@ -325,8 +326,9 @@
       </div>
     </div>
     <div class="login-box">
-      <img src="<?=base_url()?>/assets/dist/img/Garage.png" class="logo" style="width: 180px; height: 180px;">
-      <div class="card" style="background-color:#000000;">
+    <a href="<?=site_url('portofolio')?>">
+  <img src="<?=base_url()?>/assets/dist/img/Garage.png" class="logo" style="width: 180px; height: 180px;">
+</a>      <div class="card" style="background-color:#000000;">
         <div class="card-header text-center">
           <a href="<?=base_url()?>" class="h3" style="color:white;">
               <img src="<?=base_url()?>/assets/dist/img/symbol.png" alt="garage logo" class="brand-image img-circle elevation-3" style="width: 50px; height: 50px; margin-left: 5px; opacity: .8;">

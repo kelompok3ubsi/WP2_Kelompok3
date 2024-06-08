@@ -29,6 +29,7 @@ $page = $components[2];
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/sweetalert2/sweetalert2.min.css">
   <link rel="stylesheet" href="<?=base_url()?>/assets/plugins/sweetalert2/animate.min.css">
   <link rel="stylesheet" href="<?=base_url()?>/assets/dist/css/style.css">
+  <link href="<?=base_url()?>assets/dist/img/symbol.png" rel="icon" style="radius: 50%;">
 
   <script src="<?=base_url()?>/assets/plugins/jquery/jquery.min.js"></script>
   <style>
@@ -190,10 +191,11 @@ $page = $components[2];
         }
 
         .footer-text {
-            display: flex;
-            align-items: center;
-            color: white;
-        }
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        color: white;
+      }
   </style>
 </head>
 <body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'sale' ? ' sidebar-collapse' : '' ?>">
@@ -408,15 +410,7 @@ $page = $components[2];
             <div class="footer-text">
                 <strong>Copyright &copy; 2024 <a href="https://www.instagram.com/assuraa_" style="color: #0073FE;">GarageGenius</a>.</strong> All rights reserved.
             </div>
-            <div class="pyramid-loader">
-                <div class="piramid">
-                    <span class="side side1"></span>
-                    <span class="side side2"></span>
-                    <span class="side side3"></span>
-                    <span class="side side4"></span>
-                    <span class="shadow"></span>
-                </div>
-            </div>
+            
         </div>
     </footer>
 
@@ -511,4 +505,3 @@ swalWithBootstrapButtons.fire({
 
 </body>
 </html>
-
