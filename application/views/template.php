@@ -38,73 +38,11 @@ $page = $components[2];
     }
 
 
-    .logout {
-  --black: #000000;
-  --ch-black: #141414;
-  --eer-black: #1b1b1b;
-  --night-rider: #2e2e2e;
-  --white: #ffffff;
-  --af-white: #f3f3f3;
-  --ch-white: #e1e1e1;
-  border-radius: 8px;
-  width: 140px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 0px 15px;
-  border: none;
-  color: var(--white);
-  position: relative;
-  cursor: pointer;
-  font-weight: 700;
-  transition-duration: .2s;
-  background-color: var(--ch-black);
-  text-transform: uppercase;
-}
-
-.logout:before, .logout:after {
-  content: '';
-  position: absolute;
-  left: -2px;
-  top: -2px;
-  border-radius: 10px;
-  background: linear-gradient(45deg, 
-  var(--ch-black), var(--eer-black),
-  var(--night-rider), var(--ch-white), var(--night-rider), 
-	var(--eer-black), var(--ch-black),var(--ch-black));
-  background-size: 400%;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  z-index: -1;
-  animation: steam 20s linear infinite;
-}
-
-@keyframes steam {
-  0% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 400% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
-
-.logout:after {
-  filter: blur(50px);
-}
-
-
-
+   
 
 .main-footer {
             background-color: black;
-            padding: 10px;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -196,6 +134,60 @@ $page = $components[2];
         align-items: flex-end;
         color: white;
       }
+
+      .cssbuttons-io-button {
+  background: red;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em red;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em red;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #0000FF;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
   </style>
 </head>
 <body class="hold-transition sidebar-mini<?= $this->uri->segment(1) == 'sale' ? ' sidebar-collapse' : '' ?>">
@@ -243,11 +235,15 @@ $page = $components[2];
                     <small style="color: black;"><?=$this->fungsi->user_login()->address?></small>
                     </p>
                 </li>
-                <li class="user-footer d-flex justify-content-between" style="background-color: var(--black);">
-  <div style="margin-left: 65px;">
-    <button class="logout" onclick="window.location.href='<?=site_url('auth/logout')?>'">
-      Sign Out
-    </button>
+                <li class="user-footer d-flex justify-content-between" style="background-color: white;">
+  <div style="margin-left:60px;">
+    <button class="cssbuttons-io-button" onclick="window.location.href='<?=site_url('auth/logout')?>'">Sign Out
+    <div class="icon">
+    <svg width="30px" height="24px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" >
+  <path d="M868 732h-70.3c-4.8 0-9.3 2.1-12.3 5.8-7 8.5-14.5 16.7-22.4 24.5a353.84 353.84 0 0 1-112.7 75.9A352.8 352.8 0 0 1 512.4 866c-47.9 0-94.3-9.4-137.9-27.8a353.84 353.84 0 0 1-112.7-75.9 353.28 353.28 0 0 1-76-112.5C167.3 606.2 158 559.9 158 512s9.4-94.2 27.8-137.8c17.8-42.1 43.4-80 76-112.5s70.5-58.1 112.7-75.9c43.6-18.4 90-27.8 137.9-27.8 47.9 0 94.3 9.3 137.9 27.8 42.2 17.8 80.1 43.4 112.7 75.9 7.9 7.9 15.3 16.1 22.4 24.5 3 3.7 7.6 5.8 12.3 5.8H868c6.3 0 10.2-7 6.7-12.3C798 160.5 663.8 81.6 511.3 82 271.7 82.6 79.6 277.1 82 516.4 84.4 751.9 276.2 942 512.4 942c152.1 0 285.7-78.8 362.3-197.7 3.4-5.3-.4-12.3-6.7-12.3zm88.9-226.3L815 393.7c-5.3-4.2-13-.4-13 6.3v76H488c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h314v76c0 6.7 7.8 10.5 13 6.3l141.9-112a8 8 0 0 0 0-12.6z"/>
+</svg>
+  </div>
+  </button>
   </div>
 </li>
 

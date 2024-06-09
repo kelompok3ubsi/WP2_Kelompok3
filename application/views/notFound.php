@@ -57,7 +57,7 @@
 	   <div class="row d-flex justify-content-center align-items-center height-vh">
 		  <div class="col-lg-6 col-12">
 			 <div class="col-md-12">
-				<img src="assets/image/minion.png" width="100%">
+				<img src="assets/image/minion.png" width="100%" style="margin-left:50px;">
 			 </div>
 		  </div>
 		  <div class="col-lg-6 col-12">

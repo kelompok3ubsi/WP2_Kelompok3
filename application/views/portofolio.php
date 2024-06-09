@@ -1514,12 +1514,32 @@ section {
   color: #fff;
 }
 
+body, html {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .transition-overlay {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff; /* Warna latar belakang yang sesuai */
+      z-index: 9999;
+      transition: top 0.5s ease;
+    }
+
+    .transition-overlay.active {
+      top: 0;
+    }
 
 </style>
 </head>
 
 <body style="width:100%;">
-
+<div class="transition-overlay"></div>
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top d-flex justify-content-center align-items-center header-transparent">
 
@@ -1529,7 +1549,7 @@ section {
         <li><a class="nav-link scrollto" href="#about">About</a></li>
         <li><a class="nav-link scrollto" href="#views">Views</a></li>
         <li><a class="nav-link scrollto " href="#portfolio">Attachment</a></li>
-        <ul style="background-color: transparent; margin-left:100px;"><a class="login" href="<?= site_url('auth/login') ?>">Let's Go!</a></ul>
+        <ul style="background-color: transparent; margin-left:100px;"><a class="login" href="#" id="letsGoBtn">Let's Go!</a></ul>
 
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
@@ -1705,7 +1725,7 @@ section {
         <div class="row">
           <div class="cardproject col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box"  style="background-color: black; border-radius: 20px;">
-              <img src="assets/image/dashboard.png" class="clickable-image" style="width: 200px; border-radius: 20px;" onclick="openFullscreen(this)"></img>
+              <img src="assets/image/dashboard.png" class="clickable-image" style="width: 200px; height:120px; border-radius: 20px;" onclick="openFullscreen(this)"></img>
               <h4 class="title" style="margin-top: 10px;"><p style="color:white;">Dashboard</p></h4>
               <p class="description" style="color:white;">Tampilan ini terdapat info tentang grafik penjualan, produk yang terjual, dll.</p>
             </div>
@@ -1884,7 +1904,7 @@ section {
         &copy; Copyright <strong><span>GarageGenius</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <strong><span>Kelompok 3</span></strong>
       </div>
     </div>
   </footer><!-- End Footer -->
@@ -1945,3 +1965,15 @@ sr.reveal(`.bukti2`, {origin: 'bottom'})
 sr.reveal(`.bukti3`, {origin: 'right'})
 
     </script>
+    <script>
+    // Menangani klik tombol "Let's Go!"
+    document.getElementById('letsGoBtn').addEventListener('click', function() {
+      // Tambahkan kelas 'active' ke overlay transisi
+      document.querySelector('.transition-overlay').classList.add('active');
+
+      // Set timeout untuk mengarahkan pengguna ke halaman baru setelah animasi transisi selesai
+      setTimeout(function() {
+        window.location.href = "<?= site_url('auth/login') ?>"; // Ubah URL sesuai dengan URL tujuan Anda
+      }, 500); // Ubah 500 menjadi durasi animasi transisi dalam milidetik
+    });
+  </script>
