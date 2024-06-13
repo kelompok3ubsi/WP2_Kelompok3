@@ -1517,7 +1517,6 @@ section {
 body, html {
       height: 100%;
       margin: 0;
-      overflow-x: hidden;
     }
 
     .transition-overlay {
@@ -1548,7 +1547,7 @@ body, html {
         <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
         <li><a class="nav-link scrollto" href="#about">About</a></li>
         <li><a class="nav-link scrollto" href="#views">Views</a></li>
-        <li><a class="nav-link scrollto " href="#portfolio">Attachment</a></li>
+        <li><a class="nav-link scrollto " href="#portfolio">Gallery</a></li>
         <ul style="background-color: transparent; margin-left:100px;"><a class="login" href="#" id="letsGoBtn">Let's Go!</a></ul>
 
       </ul>
@@ -1609,37 +1608,6 @@ body, html {
           </div> <br><br>
           
         </div><br>
-        <div class="enzo row" style="margin-left:50px;">
-        <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start" 
-          style="background: url(assets/image/enzo.png) center center no-repeat; background-size: cover;
-                height: 350px; width: 400px; margin-top: 40px;"></div>
-            <div class="col-lg-8 d-flex flex-column align-items-stretch">
-            <div class="content ps-lg-4 d-flex flex-column justify-content-center">
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul>
-                  <br><br><br><br><br><br><li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Enzo Giuseppe Zinedine</span></li><br><br>
-                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Team:</strong> <span>Garage Genius</span></li><br><br>
-                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Bekasi, Jawa Barat</span></li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul>
-                  <br><br><br><br><br><br><li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>enzogiussepe037@gmail.com</span></li><br><br>
-                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>NIM:</strong> <span>17210332</span></li><br><br>
-                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Class:</strong> <span>17.6B.38</span></li>
-
-                  </ul>
-                </div>
-              </div>
-              
-              
-              </div>
-            </div><!-- End .content-->
-
-            </div> <br><br>
-          
-          </div><br>
 
         <div class="dava row" style="margin-left: 50px;">
         <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start" 
@@ -1659,6 +1627,38 @@ body, html {
                   <ul>
                   <br><br><br><br><br><br><li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>dava.sinatrio14@gmail.com</span></li><br><br>
                     <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>NIM:</strong> <span>17210632</span></li><br><br>
+                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Class:</strong> <span>17.6B.38</span></li>
+
+                  </ul>
+                </div>
+              </div>
+              
+              
+              </div>
+            </div><!-- End .content-->
+
+            </div> <br><br>
+          
+          </div><br>
+
+        <div class="enzo row" style="margin-left:50px;">
+        <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start" 
+          style="background: url(assets/image/enzo.png) center center no-repeat; background-size: cover;
+                height: 350px; width: 400px; margin-top: 40px;"></div>
+            <div class="col-lg-8 d-flex flex-column align-items-stretch">
+            <div class="content ps-lg-4 d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul>
+                  <br><br><br><br><br><br><li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>Enzo Giuseppe Zinedine</span></li><br><br>
+                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Team:</strong> <span>Garage Genius</span></li><br><br>
+                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Bekasi, Jawa Barat</span></li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul>
+                  <br><br><br><br><br><br><li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>enzogiussepe037@gmail.com</span></li><br><br>
+                    <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>NIM:</strong> <span>17210332</span></li><br><br>
                     <li style="color:white;"><i class="bi bi-chevron-right"></i> <strong>Class:</strong> <span>17.6B.38</span></li>
 
                   </ul>
@@ -1835,8 +1835,8 @@ body, html {
       <div class="container">
 
         <div class="portfol section-title">
-          <span>Attachment</span>
-          <h2>Attachment</h2>
+          <span>Gallery</span>
+          <h2>Gallery</h2>
           <p style="color:white;">Sedikit bukti dari pengumpulan data pada project GarageGenius.</p>
         </div>
 
@@ -1953,8 +1953,8 @@ body, html {
 sr.reveal(`.welcomehero`)
 sr.reveal(`.textabout`)
 sr.reveal(`.helmi`, {origin: 'right'})
-sr.reveal(`.enzo`, {origin: 'left'})
-sr.reveal(`.dava`, {origin: 'right'})
+sr.reveal(`.dava`, {origin: 'left'})
+sr.reveal(`.enzo`, {origin: 'right'})
 sr.reveal(`.trifah`, {origin: 'left'})
 sr.reveal(`.viewproject`)
 sr.reveal(`.cardproject`, {delay: 600, distance: '100px', interval: 100})
