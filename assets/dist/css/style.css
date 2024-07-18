@@ -1,0 +1,33 @@
+.nav-link.active {
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 40px;
+}
+
+.info-box {
+    background-color: #078BD7;
+}
+
+
+.nav-link:hover {
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 40px;
+}
+
+.info-box:hover {
+    background-color: black;
+}
+
+.info-box-text,
+.info-box-number {
+    font-weight: bold;
+    color:white;
+}
+.info-box:hover .info-box-text,
+.info-box:hover .info-box-number {
+    font-weight: bold;
+    color: white; 
+}
+
+.sidebar-mini.sidebar-collapse .main-sidebar {
+    transition: width 1s;
+}
